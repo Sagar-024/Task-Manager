@@ -1,4 +1,4 @@
-# Task Manager App - Promptly
+# Task Manager App 
 
 A modern, responsive task management application built with React and Node.js, 
 
@@ -167,3 +167,4 @@ The app has been built to match the provided design mockup exactly, including:
 ## License
 
 This project is licensed under the MIT License.
+
