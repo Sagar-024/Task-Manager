@@ -1,26 +1,13 @@
-import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ArrowLeft, Edit, LogOut, Home, User } from 'lucide-react';
+import { ArrowLeft, LogOut, Home, User } from 'lucide-react';
 
 const Profile = ({ user, setUser }) => {
   const navigate = useNavigate();
-  const [showEditProfile, setShowEditProfile] = useState(false);
-  const [formData, setFormData] = useState({
-    name: user?.name || '',
-    email: user?.email || ''
-  });
 
   const handleLogout = () => {
     localStorage.removeItem('token');
     setUser(null);
     navigate('/auth/login');
-  };
-
-  const handleUpdateProfile = async (e) => {
-    e.preventDefault();
-   
-    console.log('Update profile:', formData);
-    setShowEditProfile(false);
   };
 
   return (
@@ -55,18 +42,6 @@ const Profile = ({ user, setUser }) => {
         <div className="space-y-4 mb-20">
           <button 
             className="w-full bg-white rounded-3xl p-5 flex items-center justify-between hover:shadow-lg transition-all duration-200 shadow-md"
-            onClick={() => setShowEditProfile(true)}
-          >
-            <div className="flex items-center space-x-4">
-              <div className="w-10 h-10 bg-gray-50 rounded-2xl flex items-center justify-center">
-                <Edit size={18} className="text-gray-600" />
-              </div>
-              <span className="text-gray-900 font-semibold text-base">Edit Profile</span>
-            </div>
-          </button>
-          
-          <button 
-            className="w-full bg-white rounded-3xl p-5 flex items-center justify-between hover:shadow-lg transition-all duration-200 shadow-md"
             onClick={handleLogout}
           >
             <div className="flex items-center space-x-4">
@@ -78,65 +53,6 @@ const Profile = ({ user, setUser }) => {
           </button>
         </div>
       </div>
-
-      {/* Edit Profile Modal */}
-      {showEditProfile && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
-          <div className="bg-white rounded-3xl p-6 w-full max-w-sm" onClick={(e) => e.stopPropagation()}>
-            <div className="flex justify-between items-center mb-6">
-              <h2 className="text-xl font-semibold text-gray-900">Edit Profile</h2>
-              <button 
-                className="p-2 rounded-full hover:bg-gray-100 transition-colors"
-                onClick={() => setShowEditProfile(false)}
-              >
-                <ArrowLeft size={20} className="text-gray-600" />
-              </button>
-            </div>
-
-            <form onSubmit={handleUpdateProfile} className="space-y-4">
-              <div>
-                <input
-                  type="text"
-                  name="name"
-                  value={formData.name}
-                  onChange={(e) => setFormData({...formData, name: e.target.value})}
-                  required
-                  placeholder="Full Name"
-                  className="w-full px-4 py-4 border border-gray-200 rounded-2xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 text-gray-900"
-                />
-              </div>
-
-              <div>
-                <input
-                  type="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={(e) => setFormData({...formData, email: e.target.value})}
-                  required
-                  placeholder="Email"
-                  className="w-full px-4 py-4 border border-gray-200 rounded-2xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 text-gray-900"
-                />
-              </div>
-
-              <div className="flex space-x-3 pt-4">
-                <button 
-                  type="button" 
-                  className="flex-1 bg-gray-100 hover:bg-gray-200 text-gray-700 font-medium py-3 rounded-2xl transition-all duration-200"
-                  onClick={() => setShowEditProfile(false)}
-                >
-                  Cancel
-                </button>
-                <button 
-                  type="submit" 
-                  className="flex-1 bg-blue-500 hover:bg-blue-600 text-white font-medium py-3 rounded-2xl transition-all duration-200"
-                >
-                  Save Changes
-                </button>
-              </div>
-            </form>
-          </div>
-        </div>
-      )}
 
       {/* Bottom Navigation */}
       <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 px-4 py-2 z-40">
