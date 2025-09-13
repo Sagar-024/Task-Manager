@@ -35,8 +35,8 @@ const Dashboard = ({ user }) => {
     }
     const url =
       filter === "all"
-        ? "http://localhost:5000/api/tasks"
-        : `http://localhost:5000/api/tasks?status=${filter}`;
+        ? "https://task-manager-3-555o.onrender.com/api/tasks"
+        : `https://task-manager-3-555o.onrender.com/api/tasks?status=${filter}`;
     try {
       const res = await axios.get(url, { headers: { Authorization: `Bearer ${token}` } });
       setTasks(res.data);
@@ -51,7 +51,7 @@ const Dashboard = ({ user }) => {
     const token = localStorage.getItem("token");
     if (!token) return;
     try {
-      const res = await axios.get("http://localhost:5000/api/stats", {
+      const res = await axios.get("https://task-manager-3-555o.onrender.com/api/stats", {
         headers: { Authorization: `Bearer ${token}` },
       });
       setStats(res.data);
