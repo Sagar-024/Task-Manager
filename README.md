@@ -92,7 +92,7 @@ task-manager-app/
    npm run dev
    ```
 
-## Usage
+## Usagee
 
 1. Open your browser and go to `http://localhost:5173`
 2. Register a new account or login with existing credentials
