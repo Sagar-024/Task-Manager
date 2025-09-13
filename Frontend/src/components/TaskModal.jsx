@@ -47,7 +47,7 @@ const TaskModal = ({ task, onClose, onSave }) => {
         return;
       }
 
-      const url = task ? `http://localhost:5000/api/tasks/${task._id}` : 'http://localhost:5000/api/tasks';
+      const url = task ? `https://task-manager-3-555o.onrender.com/api/tasks/${task._id}` : 'https://task-manager-3-555o.onrender.com/api/tasks';
       const method = task ? 'put' : 'post';
 
       const payload = {

@@ -87,7 +87,7 @@ const Dashboard = ({ user }) => {
 
     try {
       await axios.put(
-        `http://localhost:5000/api/tasks/${task._id}`,
+        `https://task-manager-3-555o.onrender.com/api/tasks/${task._id}`,
         { status: newStatus, progress: newProgress },
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -103,7 +103,7 @@ const Dashboard = ({ user }) => {
     const token = localStorage.getItem("token");
     if (!token) return;
     try {
-      await axios.delete(`http://localhost:5000/api/tasks/${taskId}`, {
+      await axios.delete(`https://task-manager-3-555o.onrender.com/api/tasks/${taskId}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       await fetchTasks();

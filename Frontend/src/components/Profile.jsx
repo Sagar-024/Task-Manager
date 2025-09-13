@@ -18,7 +18,7 @@ const Profile = ({ user, setUser }) => {
 
   const handleUpdateProfile = async (e) => {
     e.preventDefault();
-    // TODO: Implement profile update API call
+   
     console.log('Update profile:', formData);
     setShowEditProfile(false);
   };
