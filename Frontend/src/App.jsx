@@ -29,7 +29,7 @@ function App() {
     const token = localStorage.getItem('token');
     if (token) {
       // Verify token and get user data
-      axios.get('http://localhost:5000/api/auth/me', {
+      axios.get('https://task-manager-3-555o.onrender.com/api/auth/me', {
         headers: {
           'Authorization': `Bearer ${token}`
         }
